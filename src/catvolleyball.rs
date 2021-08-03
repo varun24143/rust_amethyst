@@ -3,6 +3,9 @@ use amethyst::{core::transform::Transform, prelude::*, renderer::Camera};
 pub const ARENA_HEIGHT: f32 = 500.0;
 pub const ARENA_WIDTH: f32 = 500.0;
 
+pub const PLAYER_HEIGHT: f32 = 32.0;
+pub const PLAYER_WIDTH: f32 = 22.0;
+
 // Initialize the camera
 
 pub fn initialize_camera(world: &mut world) {
