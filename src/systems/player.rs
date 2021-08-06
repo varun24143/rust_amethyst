@@ -20,18 +20,15 @@ impl<'s> System<'s> for PlayerSystem {
     type SystemData = (
         WriteStorage<'s Transform>, // Get the mutable reference to the entire storage of the compnent type
         ReadStorage<'s Player>, // Get an immutable reference to the entire storage of the component Type
-<<<<<<< HEAD
         Read<'s Time>, // we need to read the time difference
         Read<'s InputHandler::<StringBindings>> // Get an immutable reference to the resource
     );
 
     fn run(&mut self, (mut transforms, players, time, input): Self::SystemData) {
-=======
         Read<'s InputHandler::<StringBindings>> // Get an immutable reference to the resource
     );
 
     fn run(&mut self, (mut transforms, players, input): Self::SystemData) {
->>>>>>> c5606777e4c4c7e3abe49d946366dbc8a5b49528
         for (player, transform) in (&mut players, &mut transforms).join() {
             let movement = match player.side {
                 Side::Left => input.axis_value("left_player"),
@@ -39,7 +36,6 @@ impl<'s> System<'s> for PlayerSystem {
             };
 
             if let Some(mv_amount) = movement {
-<<<<<<< HEAD
                 let scaled_amount = (
                     PLAYER_SPEED * time.delta_seconds() * mv_amount
                 ) as f32;
@@ -63,7 +59,6 @@ impl<'s> System<'s> for PlayerSystem {
                 }
             }
         }
-=======
                 if mv_amount != 0.0 {
                     let side_name = match player.side {
                         Side::Left => "Left",
@@ -75,4 +70,3 @@ impl<'s> System<'s> for PlayerSystem {
         }
     }
 } 
->>>>>>> c5606777e4c4c7e3abe49d946366dbc8a5b49528
