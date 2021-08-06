@@ -6,11 +6,19 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
+// Arena (window) values
 pub const ARENA_HEIGHT: f32 = 500.0;
 pub const ARENA_WIDTH: f32 = 500.0;
 
+// Player values
 pub const PLAYER_HEIGHT: f32 = 32.0;
 pub const PLAYER_WIDTH: f32 = 22.0;
+
+
+// Ball values
+pub const BALL_VELOCITY_X: f32 = 30.0;
+pub const BALL_VELOCITY_Y: f32 = 0.0;
+pub const BALL_RADIUS: f32 = 4.0;
 
 #[derive(PartialEq, Eq)]
 pub enum Side {

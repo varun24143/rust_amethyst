@@ -8,11 +8,6 @@ use amethyst::{
 
 use crate::catvolleyball::{Player, Side, ARENA_HEIGHT, ARENA_WIDTH};
 
-<<<<<<< HEAD
-pub const PLAYER_SPEED: f32 = 60.0;
-
-=======
->>>>>>> c5606777e4c4c7e3abe49d946366dbc8a5b49528
 #[derive(SystemDesc)]
 pub struct PlayerSystem;
 
