@@ -32,6 +32,12 @@ pub struct Player {
     pub height: f32,
 }
 
+pub struct Ball {
+    pub velocity: [f32; 2],
+    pub radius: f32,
+}
+
+// player implementation
 impl Player {
     fn new(side: Side) -> Player {
         Player {
@@ -42,7 +48,13 @@ impl Player {
     }
 }
 
+// Player conmponent
 impl Component for Player {
+    type Storage = DenseVecStorage<Self>;
+}
+
+// Ball Component
+impl Component for Ball {
     type Storage = DenseVecStorage<Self>;
 }
 
@@ -104,6 +116,30 @@ pub fn initialize_camera(world: &mut World) {
     .build();
 }
 
+
+// Initialize the ball
+
+pub fn initialize_ball(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
+    // create the translation
+    let mut local_transform = Transform::default();
+    local_transform.set_translation_xyz(ARENA_WIDTH/2.0, ARENA_HEIGHT/2.0, 0.0);
+
+    // Assign the sprite for the ball
+    let sprite_render = SpriteRender {
+        sprite_sheet: sprite_sheet_handle,
+        sprite_number: 2, // ball is the third sprite on the spritesheet
+    };
+    world
+    .create_entity()
+    .with(sprite_render)
+    .with(Ball {
+        radius: BALL_RADIUS,
+        velocity: [BALL_VELOCITY_X, BALL_VELOCITY_Y],
+    })
+    .with(local_transform)
+    .build();
+}
+
 pub struct CatVolleyball;
 
 impl SimpleState for CatVolleyball {
@@ -111,7 +147,8 @@ impl SimpleState for CatVolleyball {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let world = data.world;
         let sprite_sheet_handle = load_sprite_sheet(world);
-        initialize_players(world, sprite_sheet_handle);
+        initialize_players(world, sprite_sheet_handle.clone());
+        initialize_ball(world, sprite_sheet_handle.clone());
         //world.register::<Player>();
 
         initialize_camera(world);
