@@ -22,7 +22,7 @@ impl<'s> System<'s> for MoveBallsSystem {
         Read<'s, Time>, // To know the time difference b/w executions
     );
     
-    fn run(&mut self, (mut balls, mut locals, time)): Self::SystemData) {
+    fn run(&mut self, (mut balls, mut locals, time): Self::SystemData) {
         // Move every ball according to its speed and time passed
         // implementing gravity
         for (ball, local) in (&mut balls, &mut locals).join() {

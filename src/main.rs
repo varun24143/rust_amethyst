@@ -12,6 +12,7 @@ use amethyst::{
 };
 
 mod catvolleyball;
+mod systems;
 
 use crate::catvolleyball::CatVolleyball;
 
@@ -37,6 +38,7 @@ fn main() -> amethyst::Result<()> {
     .with_plugin(RenderToWindow::from_config_path(display_config_path)?
     .with_clear([0,0,0,1]),
     )
+    .with(systems::MoveBallsSystem, "ball_system", &[])
     .with_plugin(RenderFlat2D::default())
     .with_plugin(RenderUi::default()),
     )?;
