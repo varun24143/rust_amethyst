@@ -5,8 +5,10 @@ use amethyst::{
     derive::SystemDesc,
     ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, World, WriteStorage}
 };
+extern crate rand;
 
 use crate::catvolleyball::{Player, Ball, Side, ARENA_HEIGHT, ARENA_WIDTH};
+use rand::Rng;
 
 #[derive(SystemDesc)]
 pub struct BounceSystem;
@@ -39,4 +41,15 @@ impl<'s> System<'s> for BounceSystem {
             }
         }
     }
+}
+
+fn point_in_rect(
+    x: f32,
+    y: f32, 
+    left: f32, 
+    bottom: f32, 
+    right: f32, 
+    top: f32
+    ) -> bool {
+    x >= left && x <= right && y >= bottom && y <= top
 }
