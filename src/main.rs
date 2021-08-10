@@ -39,6 +39,7 @@ fn main() -> amethyst::Result<()> {
     .with_clear([0,0,0,1]),
     )
     .with(systems::MoveBallsSystem, "ball_system", &[])
+    .with(systems::BounceSystem, "collision_system", &["player_system", "ball_sytem"])
     .with_plugin(RenderFlat2D::default())
     .with_plugin(RenderUi::default()),
     )?;

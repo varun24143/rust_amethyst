@@ -1,6 +1,9 @@
 mod player;
+mod bounce;
 mod move_balls;
 
+
 pub use self::player::PlayerSystem;
-pub use move_balls::MoveBallsSystem;
+pub use self::bounce::BounceSystem;
+pub use self::move_balls::MoveBallsSystem;
 
