@@ -33,6 +33,11 @@ impl<'s> System<'s> for WinnerSystem {
 
             // reset the ball to middle
             transform.set_translation_x(ARENA_WIDTH/2.0);
+            transform.set_translation_y(ARENA_HEIGHT/2.0);
+            // reverse the direction
+            ball.velocity[0] = -ball.velocity[0];
+            ball.velocity[1] = 0.0; // reset to free drop
+            
         }
     }
 }
