@@ -38,6 +38,7 @@ fn main() -> amethyst::Result<()> {
     .with_plugin(RenderToWindow::from_config_path(display_config_path)?
     .with_clear([0,0,0,1]),
     )
+    .with_plugin(RenderUi::default())
     .with(systems::PlayerSystem, "player_system", &["input_system"])
     .with(systems::MoveBallsSystem, "ball_system", &[])
     .with(systems::BounceSystem, "collision_system", &["player_system", "ball_sytem"])
