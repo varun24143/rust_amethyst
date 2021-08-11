@@ -189,6 +189,8 @@ pub fn initialize_scoreboard(world: &mut World) {
         "0".to_string(),
         [1., 1., 1., 1.],
         50.,
+        LineMode::Wrap,
+        Anchor::Middle,
  
     ))
     .build();
@@ -202,6 +204,8 @@ pub fn initialize_scoreboard(world: &mut World) {
         "0".to_string(),
         [1., 1., 1., 1.],
         50.,
+        LineMode::Wrap,
+        Anchor::Middle,
  
     ))
     .build();
